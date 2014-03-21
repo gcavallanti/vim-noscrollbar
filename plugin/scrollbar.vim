@@ -38,6 +38,6 @@ function! ScrollBar(...)
     " if (scroll_bar_gripper_size + top_line_perc > size)
     "     let scroll_bar_gripper_size = scroll_bar_gripper_size - 1
     " endif
-    let scroll_bar = repeat(' ', top_line_perc) . repeat('=', scroll_bar_gripper_size) . repeat(' ', size - scroll_bar_gripper_size - top_line_perc)
+    let scroll_bar = repeat(a:2, top_line_perc) . repeat(a:3, scroll_bar_gripper_size) . repeat(a:2, size - scroll_bar_gripper_size - top_line_perc)
     return scroll_bar
 endfunction
