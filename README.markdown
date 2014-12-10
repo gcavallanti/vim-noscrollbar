@@ -23,12 +23,12 @@ Once help tags have been generated, you can view the manual with
 
 ### How to use
 
-Simply add `%{noscrollbar#statusline()}` to `statusline` and you are done.  The
+Simply add `%{noscrollbar#statusline()}` to the `statusline` option and you are done.  The
 default behavior returns a string of length 20 where the dash character '-' is
 used to render the track of the scrollbar and the pipe character ':' is used to
 render the gripper.  The scrollbar look can be customized by passing the length,
 the track character and the gripper character. For example the default look is
-set by calling %{noscrollbar#statusline(20,'-',':'}%.
+set by calling `%{noscrollbar#statusline(20,'-',':'}`.
 
 ### High resolution mode
 
@@ -37,11 +37,9 @@ for details.
 
 ## Self-Promotion
 
-Like noscrollbar? Follow and/or star the repository on
-[GitHub](https://github.com/gcavallanti/vim-noscrollbar) and vote for it on
-[vim.org](http://www.vim.org/scripts/script.php?script_id=1697).  And if
-you're feeling especially charitable, follow
-[GitHub](https://github.com/gcavallanti).
+Like noscrollbar? Follow and/or star the
+[repository](https://github.com/gcavallanti/vim-noscrollbar). You might also want to follow 
+me on [GitHub](https://github.com/gcavallanti).
 
 ## License
 
