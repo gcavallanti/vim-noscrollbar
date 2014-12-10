@@ -1,10 +1,10 @@
-if &cp || exists('g:scroll_loaded')
+if &cp || exists('g:noscrollbar_loaded')
   finish
 endif
 
-let g:scrollbar_loaded = 1
+let g:noscrollbar_loaded = 1
 
-function! ScrollBar(...)
+function! noscrollbar#statusline(...)
     let top_line = line("w0")
     let bottom_line = line("w$")
     let current_line = line('.')
@@ -28,14 +28,13 @@ function! ScrollBar(...)
         let gripper_left_symbols = a:4
         let gripper_right_symbols = a:5
         let scaling = len(gripper_left_symbols) + 1 
-        " let scaling = len(gripper_left_symbols) 
         if a:0 == 6
           let part = a:6
         endif
     endif
 
     " Compute gripper position and size as if we have scaling times a:1
-    " characters available and shrink everything back just before returning 
+    " characters available. Will shrink everything back just before returning 
     let scrollbar_length = str2nr(length) * scaling
 
     " Gripper positions are 0 based (0..scrollbar_length-1)

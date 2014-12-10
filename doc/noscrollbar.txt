@@ -28,7 +28,7 @@ the gripper.  The scrollbar look can be customized by passing the length, the
 track character and the gripper character. For example the following %{} item:
 >
 
-    %{Noscrollbar(9,'_','=')
+    %{noscrollbar#statusline(20,'-',':')
 <
 results in a scrollbar that looks like this: >
 
@@ -43,23 +43,23 @@ edges.  If your vim correctly displays unicode characters then adding >
 to the 'statusline' option gives a simple high-resolution scrollbar.
 
 ==============================================================================
-VARIABLES                                       *noscrollbar-functions*
+STATUSLINE                                      *noscrollbar-functions*
 
 The |noscrollbar#statusline()| should be called inside a %{} 'statusline'
 expression item.
 
-                                                *Noscrollbar()*
-noscrollbar#statusline({length}, {track_symbol}, {gripper_symbol} [, {gripper_left_symbols}, 
-{gripper_right_symbols}, {part}])
+                                                *noscrollbar#statusline()*
+noscrollbar#statusline({length}, {track_symbol}, {gripper_symbol} [,
+{gripper_left_symbols}, {gripper_right_symbols}, {part}])
                 Return a string of length {length} representing the scrollbar.
                 {track_symbol} is the character used to render the track element
                 of the scrollbar.  {gripper_char} is the character used to
                 render the gripper element of the scrollbar.
                 {gripper_left_symbols} and {gripper_right_symbols} are lists of
                 characters, of the same length, used to render the states that
-                range from "close to track symbol" to "close to gripper symbol". Setting
-                {part} to 'l', 'm', 'r' returns the left track element, the
-                middle (gripper) element or the right (track) element,
+                range from "close to track symbol" to "close to gripper symbol".
+                Setting {part} to 'l', 'm', 'r' returns the left track element,
+                the middle (gripper) element or the right (track) element,
                 respectively.
 
 ==============================================================================
