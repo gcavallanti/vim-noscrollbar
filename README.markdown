@@ -1,10 +1,10 @@
 # Noscrollbar: a scrollbar-like widget for vim 
 
+![Noscrollbar demo](https://gcavallanti.github.io/vim-noscrollbar/noscrollbar.gif)
+
 Noscrollbar is a scrollbar-like widget for the vim statusline that
 provides a visual feedback of what part of a buffer is currently shown on
-screen. 
-
-![Noscrollbar demo](https://gcavallanti.github.io/vim-noscrollbar/noscrollbar.gif)
+screen.
 
 The "no" in noscrollbar refers to the fact that the gripper cannot be
 really gripped and dragged, i.e., the scrollbar cannot be used to scroll the
@@ -16,7 +16,7 @@ I recommend installing [pathogen.vim](https://github.com/tpope/vim-pathogen), an
 then simply copy and paste:
 
     cd ~/.vim/bundle
-    git clone git://github.com/gcavallanti/noscrollbar.git
+    git clone https://github.com/gcavallanti/vim-noscrollbar.git
 
 Once help tags have been generated, you can view the manual with
 `:help noscrollbar`.
