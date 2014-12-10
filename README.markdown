@@ -23,12 +23,16 @@ Once help tags have been generated, you can view the manual with
 
 ### How to use
 
-Simply add `%{noscrollbar#statusline()}` to the `statusline` option and you are done.  The
-default behavior returns a string of length 20 where the dash character '-' is
-used to render the track of the scrollbar and the pipe character ':' is used to
-render the gripper.  The scrollbar look can be customized by passing the length,
-the track character and the gripper character. For example the default look is
-set by calling `%{noscrollbar#statusline(20,'-',':'}`.
+Simply add `%{noscrollbar#statusline()}` to the `statusline` option and you are
+done. Example:
+
+    set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
+
+The default behavior returns a string of length 20 where the dash character '-'
+is used to render the track of the scrollbar and the pipe character ':' is used
+to render the gripper.  The scrollbar look can be customized by passing the
+length, the track character and the gripper character. For example the default
+look is set by calling `%{noscrollbar#statusline(20,'-',':'}`.
 
 ### High resolution mode
 
