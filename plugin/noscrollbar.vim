@@ -12,22 +12,22 @@ function! noscrollbar#statusline(...)
 
     " Default values
     let length = 20
-    let track_symbol = '-'
-    let gripper_symbol = ':'
+    let tracksymbol = '-'
+    let grippersymbol = ':'
     let part = 'a'
     let scaling = 1
 
     if a:0 >= 3
       let length = a:1
-      let track_symbol = a:2
-      let gripper_symbol = a:3
+      let tracksymbol = a:2
+      let grippersymbol = a:3
     endif
 
     if a:0 >= 5 && type(a:4) == 3 && type(a:5) == 3
                 \ && len(a:4) == len(a:5) 
-        let gripper_left_symbols = a:4
-        let gripper_right_symbols = a:5
-        let scaling = len(gripper_left_symbols) + 1 
+        let gripperleftsymbols = a:4
+        let gripperrightsymbols = a:5
+        let scaling = len(gripperleftsymbols) + 1 
         if a:0 == 6
           let part = a:6
         endif
@@ -84,24 +84,24 @@ function! noscrollbar#statusline(...)
     " Time to assemble the actual scrollbar
     let scrollbar = ''
     if part != 'm' && part != 'r'
-        let scrollbar .= repeat(track_symbol, float2nr(floor(gripper_position)))
+        let scrollbar .= repeat(tracksymbol, float2nr(floor(gripper_position)))
 
-        let gripper_symbol_index = float2nr(round(gripper_length_left * scaling))
-        if gripper_symbol_index != 0
-            let scrollbar .= gripper_left_symbols[gripper_symbol_index - 1]
+        let grippersymbol_index = float2nr(round(gripper_length_left * scaling))
+        if grippersymbol_index != 0
+            let scrollbar .= gripperleftsymbols[grippersymbol_index - 1]
         endif
     endif
     
     if part != 'l' && part != 'r'
-        let scrollbar .= repeat(gripper_symbol, float2nr(gripper_length_middle)) 
+        let scrollbar .= repeat(grippersymbol, float2nr(gripper_length_middle)) 
     endif
 
     if part != 'l' && part != 'm'
-        let gripper_symbol_index = float2nr(round(gripper_length_right * scaling))
-        if gripper_symbol_index != 0
-            let scrollbar .= gripper_right_symbols[gripper_symbol_index - 1]
+        let grippersymbol_index = float2nr(round(gripper_length_right * scaling))
+        if grippersymbol_index != 0
+            let scrollbar .= gripperrightsymbols[grippersymbol_index - 1]
         endif
-        let scrollbar .= repeat(track_symbol, float2nr(scrollbar_length 
+        let scrollbar .= repeat(tracksymbol, float2nr(scrollbar_length 
                     \ - ceil(gripper_position + gripper_length)))
     endif
 

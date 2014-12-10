@@ -21,14 +21,22 @@ window with the mouse.
 CONFIG                                          *noscrollbar-config*
 
 The easiest way to use noscrollbar is simply to add the
-%{|noscrollbar#statusline()|} item to the 'statusline' option.  The default
-behavior returns a string of length 20 where the dash character '-' is used to
-render the track of the scrollbar and the pipe character ':' is used to render
-the gripper.  The scrollbar look can be customized by passing the length, the
-track character and the gripper character. For example the following %{} item:
+%{|noscrollbar#statusline()|} item to the 'statusline' option. 
+Setting 'statusline' to >
+
+    %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline()}
+<
+gives a 'statusline' that matches the default one when 'ruler' is set, except
+that the relative position is replaced by a scrollbar.
+
+The default behavior returns a string of length 20 where the dash character "-"
+is used to render the track of the scrollbar and the colon character ":" is used
+to render the gripper.  The scrollbar look can be customized by passing the
+length, the track character and the gripper character. For example the following
+%{} item:
 >
 
-    %{noscrollbar#statusline(20,'-',':')
+    %{noscrollbar#statusline(9,'_','=')
 <
 results in a scrollbar that looks like this: >
 
@@ -49,13 +57,13 @@ The |noscrollbar#statusline()| should be called inside a %{} 'statusline'
 expression item.
 
                                                 *noscrollbar#statusline()*
-noscrollbar#statusline({length}, {track_symbol}, {gripper_symbol} [,
-{gripper_left_symbols}, {gripper_right_symbols}, {part}])
+noscrollbar#statusline({length}, {track_symbol}, {grippersymbol} [,
+{gripperleftsymbols}, {gripperrightsymbols} [, {part}]])
                 Return a string of length {length} representing the scrollbar.
                 {track_symbol} is the character used to render the track element
                 of the scrollbar.  {gripper_char} is the character used to
                 render the gripper element of the scrollbar.
-                {gripper_left_symbols} and {gripper_right_symbols} are lists of
+                {gripperleftsymbols} and {gripperrightsymbols} are lists of
                 characters, of the same length, used to render the states that
                 range from "close to track symbol" to "close to gripper symbol".
                 Setting {part} to 'l', 'm', 'r' returns the left track element,
