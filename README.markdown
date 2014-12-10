@@ -1,4 +1,4 @@
-# Noscrollbar: a scrollbar-like widget for vim 
+# Noscrollbar
 
 ![Noscrollbar demo](https://gcavallanti.github.io/vim-noscrollbar/noscrollbar.gif)
 
