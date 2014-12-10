@@ -31,7 +31,7 @@ set by calling %{noscrollbar#statusline(20,'-',':'}%.
 NoscrollBar comes with an high resolution mode.  Check `:help noscrollbar`
 for details. 
 
-![Noscrollbar demo](http://i.imgur.com/0OP4ood.gif)
+![Noscrollbar demo](https://gcavallanti.github.io/vimpos/noscrollbar.gif)
 
 ## Self-Promotion
 
