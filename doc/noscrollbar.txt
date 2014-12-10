@@ -1,0 +1,86 @@
+*noscrollbar.txt*	For Vim version 7.3	Last change: 2014 Dec 10
+
+
+CONTENTS                                        *noscrollbar*
+Introduction                                    |noscrollbar-introduction|
+Config                                          |noscrollbar-config|
+Statusline                                      |noscrollbar-statusline|
+FAQ                                             |noscrollbar-faq|
+Changelog                                       |noscrollbar-changelog|
+About                                           |noscrollbar-about|
+==============================================================================
+INTRODUCTION                                    *noscrollbar-introduction*
+
+Noscrollbar is a scrollbar-like widget for the vim statusline that
+provides a visual feedback of what part of a buffer is currently shown on
+screen.  The "no" in noscrollbar refers to the fact that the gripper cannot be
+really gripped and dragged, i.e., the scrollbar cannot be used to scroll the
+window with the mouse.  
+
+==============================================================================
+CONFIG                                          *noscrollbar-config*
+
+The easiest way to use noscrollbar is simply to add the
+%{|noscrollbar#statusline()|} item to the 'statusline' option.  The default
+behavior returns a string of length 20 where the dash character '-' is used to
+render the track of the scrollbar and the pipe character ':' is used to render
+the gripper.  The scrollbar look can be customized by passing the length, the
+track character and the gripper character. For example the following %{} item:
+>
+
+    %{Noscrollbar(9,'_','=')
+<
+results in a scrollbar that looks like this: >
+
+    __==_____
+<
+Noscrollbar comes with an high-resolution mode.  Turning it on is just a matter
+of passing two lists of characters used to render the gripper left and right
+edges.  If your vim correctly displays unicode characters then adding >
+
+    %{noscrollbar#statusline(9,'■','◫',['◧'],['◨'])}
+<
+to the 'statusline' option gives a simple high-resolution scrollbar.
+
+==============================================================================
+VARIABLES                                       *noscrollbar-functions*
+
+The |noscrollbar#statusline()| should be called inside a %{} 'statusline'
+expression item.
+
+                                                *Noscrollbar()*
+noscrollbar#statusline({length}, {track_symbol}, {gripper_symbol} [, {gripper_left_symbols}, 
+{gripper_right_symbols}, {part}])
+                Return a string of length {length} representing the scrollbar.
+                {track_symbol} is the character used to render the track element
+                of the scrollbar.  {gripper_char} is the character used to
+                render the gripper element of the scrollbar.
+                {gripper_left_symbols} and {gripper_right_symbols} are lists of
+                characters, of the same length, used to render the states that
+                range from "close to track symbol" to "close to gripper symbol". Setting
+                {part} to 'l', 'm', 'r' returns the left track element, the
+                middle (gripper) element or the right (track) element,
+                respectively.
+
+==============================================================================
+FAQ                                              *noscrollbar-faq*
+
+Q: Is it possible to scroll a window by dragging the gripper ?
+A: No, it isn't. As far as I know mouse clicks on the statusline are not
+   passed to vimscripts.
+
+==============================================================================
+CHANGELOG                                        *noscrollbar-changelog*
+
+0.1
+* Initial version
+
+==============================================================================
+ABOUT                                           *noscrollbar-about*
+
+Grab the latest version or report a bug on GitHub:
+
+http://github.com/gcavallanti/vim-noscrollbar
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl

@@ -10,20 +10,33 @@ function! ScrollBar(...)
     let current_line = line('.')
     let lines_count = line('$')
 
-    if a:0 == 6 && type(a:4) == 3 && type(a:5) == 3
+    " Default values
+    let length = 10
+    let track_symbol = '-'
+    let gripper_symbol = '|'
+    let part = 'a'
+    let scaling = 1
+
+    if a:0 >= 3
+      let length = a:1
+      let track_symbol = a:2
+      let gripper_symbol = a:3
+    endif
+
+    if a:0 >= 5 && type(a:4) == 3 && type(a:5) == 3
                 \ && len(a:4) == len(a:5) 
         let gripper_left_symbols = a:4
         let gripper_right_symbols = a:5
-        let scaling = len(gripper_left_symbols)
-        let part = a:6
-    else
-        let part = 'a'
-        let scaling = 1
+        let scaling = len(gripper_left_symbols) + 1 
+        " let scaling = len(gripper_left_symbols) 
+        if a:0 == 6
+          let part = a:6
+        endif
     endif
 
     " Compute gripper position and size as if we have scaling times a:1
     " characters available and shrink everything back just before returning 
-    let scrollbar_length = str2nr(a:1) * scaling
+    let scrollbar_length = str2nr(length) * scaling
 
     " Gripper positions are 0 based (0..scrollbar_length-1)
     let gripper_position = float2nr((top_line - 1.0) / lines_count 
@@ -69,30 +82,29 @@ function! ScrollBar(...)
     let gripper_length_right = gripper_length - gripper_length_left 
                 \ - gripper_length_middle
 
-    " Time to build the actual scrollbar
+    " Time to assemble the actual scrollbar
     let scrollbar = ''
     if part != 'm' && part != 'r'
-        let scrollbar .= repeat(a:2, float2nr(floor(gripper_position)))
+        let scrollbar .= repeat(track_symbol, float2nr(floor(gripper_position)))
 
         let gripper_symbol_index = float2nr(round(gripper_length_left * scaling))
         if gripper_symbol_index != 0
-            let scrollbar .= gripper_left_symbols[gripper_symbol_index]
+            let scrollbar .= gripper_left_symbols[gripper_symbol_index - 1]
         endif
     endif
     
     if part != 'l' && part != 'r'
-        let scrollbar .= repeat(a:3, float2nr(gripper_length_middle)) 
+        let scrollbar .= repeat(gripper_symbol, float2nr(gripper_length_middle)) 
     endif
 
     if part != 'l' && part != 'm'
         let gripper_symbol_index = float2nr(round(gripper_length_right * scaling))
         if gripper_symbol_index != 0
-            let scrollbar .= gripper_right_symbols[gripper_symbol_index]
+            let scrollbar .= gripper_right_symbols[gripper_symbol_index - 1]
         endif
-        let scrollbar .= repeat(a:2, float2nr(scrollbar_length 
+        let scrollbar .= repeat(track_symbol, float2nr(scrollbar_length 
                     \ - ceil(gripper_position + gripper_length)))
     endif
-
 
     return scrollbar
 endfunction
