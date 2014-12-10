@@ -11,9 +11,9 @@ function! noscrollbar#statusline(...)
     let lines_count = line('$')
 
     " Default values
-    let length = 10
+    let length = 20
     let track_symbol = '-'
-    let gripper_symbol = '|'
+    let gripper_symbol = ':'
     let part = 'a'
     let scaling = 1
 
