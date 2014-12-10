@@ -2,11 +2,13 @@
 
 Noscrollbar is a scrollbar-like widget for the vim statusline that
 provides a visual feedback of what part of a buffer is currently shown on
-screen.  The "no" in noscrollbar refers to the fact that the gripper cannot be
+screen. 
+
+![Noscrollbar demo](https://gcavallanti.github.io/vim-noscrollbar/noscrollbar.gif)
+
+The "no" in noscrollbar refers to the fact that the gripper cannot be
 really gripped and dragged, i.e., the scrollbar cannot be used to scroll the
 window with the mouse.  
-
-![Noscrollbar demo](https://gcavallanti.github.io/vimpos/noscrollbar.gif)
 
 ## Installation
 
