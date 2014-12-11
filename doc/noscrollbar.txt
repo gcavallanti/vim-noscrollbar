@@ -30,7 +30,7 @@ gives a 'statusline' that matches the default one when 'ruler' is set, except
 that the relative position is replaced by a scrollbar.
 
 The default behavior returns a string of length 20 where the dash character "-"
-is used to render the track of the scrollbar and the colon character ":" is used
+is used to render the track of the scrollbar and the hash character "#" is used
 to render the gripper.  The scrollbar look can be customized by passing the
 length, the track character and the gripper character. For example the following
 %{} item:
@@ -46,10 +46,20 @@ Noscrollbar comes with an high-resolution mode.  Turning it on is just a matter
 of passing two lists of characters used to render the gripper left and right
 edges.  If your vim correctly displays unicode characters then adding >
 
-    %{noscrollbar#statusline(9,'■','◫',['◧'],['◨'])}
+    %{noscrollbar#statusline(20,'■','◫',['◧'],['◨'])}
 <
-to the 'statusline' option gives a simple high-resolution scrollbar.
+to the 'statusline' option gives a simple high-resolution scrollbar.  The
+high-resolution mode depends on unicode characters to render partial states
+where the edges of the statusbar should be somewhere in the middle of
+a character (a sort of subpixel-rendering).  For this to work properly
+a cooperation between vim (|+multi_byte|) and your font of choice is required.
+If the above settings do not work for you, try to experiment with these
+alternative choices >
 
+    %{noscrollbar#statusline(20,'-','█',['▐'],['▌']))}
+
+    %{noscrollbar#statusline(20,'-','▓',['▐'],['▌']))}
+<
 ==============================================================================
 STATUSLINE                                      *noscrollbar-functions*
 
@@ -77,6 +87,16 @@ Q: Is it possible to scroll a window by dragging the gripper ?
 A: No, it isn't. As far as I know mouse clicks on the statusline are not
    passed to vimscripts.
 
+Q: Is it possible to use Noscrollbar with vim-airline ?
+A: Yes! add this to your .vimrc >
+
+    function! Noscrollbar(...)
+        let w:airline_section_z = '%{noscrollbar#statusline()}'
+    endfunction
+    call airline#add_statusline_func('Noscrollbar')
+<
+    (Thanks to reddit user threeifbywhiskey)
+
 ==============================================================================
 CHANGELOG                                        *noscrollbar-changelog*
 
@@ -84,7 +104,7 @@ CHANGELOG                                        *noscrollbar-changelog*
 * Initial version
 
 ==============================================================================
-ABOUT                                           *noscrollbar-about*
+ABOUT                                            *noscrollbar-about*
 
 Grab the latest version or report a bug on GitHub:
 
