@@ -36,7 +36,7 @@ length, the track character and the gripper character. For example the following
 %{} item:
 >
 
-    %{noscrollbar#statusline(9,'_','=')
+    %{noscrollbar#statusline(9,'_','=')}
 <
 results in a scrollbar that looks like this: >
 
