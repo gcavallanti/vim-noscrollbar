@@ -13,9 +13,10 @@ function! noscrollbar#statusline(...)
     " Default values
     let length = 20
     let tracksymbol = '-'
-    let grippersymbol = ':'
+    let grippersymbol = '#'
+    let gripperleftsymbols = []
+    let gripperrightsymbols = []
     let part = 'a'
-    let scaling = 1
 
     if a:0 >= 3
       let length = a:1
@@ -27,11 +28,13 @@ function! noscrollbar#statusline(...)
                 \ && len(a:4) == len(a:5) 
         let gripperleftsymbols = a:4
         let gripperrightsymbols = a:5
-        let scaling = len(gripperleftsymbols) + 1 
-        if a:0 == 6
-          let part = a:6
-        endif
     endif
+
+    if a:0 >= 6
+      let part = a:6
+    endif
+
+    let scaling = len(gripperleftsymbols) + 1 
 
     " Compute gripper position and size as if we have scaling times a:1
     " characters available. Will shrink everything back just before returning 
