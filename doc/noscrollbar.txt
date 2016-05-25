@@ -56,9 +56,9 @@ a cooperation between vim (|+multi_byte|) and your font of choice is required.
 If the above settings do not work for you, try to experiment with these
 alternative choices >
 
-    %{noscrollbar#statusline(20,'-','█',['▐'],['▌']))}
+    %{noscrollbar#statusline(20,'-','█',['▐'],['▌'])}
 
-    %{noscrollbar#statusline(20,'-','▓',['▐'],['▌']))}
+    %{noscrollbar#statusline(20,'-','▓',['▐'],['▌'])}
 <
 ==============================================================================
 STATUSLINE                                      *noscrollbar-functions*
