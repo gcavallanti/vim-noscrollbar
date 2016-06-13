@@ -1,9 +1,3 @@
-if &cp || exists('g:noscrollbar_loaded')
-  finish
-endif
-
-let g:noscrollbar_loaded = 1
-
 function! noscrollbar#statusline(...)
     let top_line = line("w0")
     let bottom_line = line("w$")
